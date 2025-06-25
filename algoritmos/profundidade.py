@@ -1,14 +1,15 @@
 #DFS
 from time import time
 from puzzle import Puzzle
-from typing import List, Tuple
+from typing import Tuple, Optional
+
 
 def busca_em_profundidade(
     inicial: Puzzle,
     objetivo: Tuple[int],
     tempo_maximo: int = 10,
     limite: int = 10
-) -> Tuple[List[str], int, int]:
+) -> Tuple[Optional[Puzzle], int]:
     
     inicio = time()
     fronteira = [inicial]
@@ -28,14 +29,15 @@ def busca_em_profundidade(
         nos_expandidos += 1
 
         if atual.estado == objetivo:
-            return atual.caminho(), atual.profundidade, nos_expandidos
+            return atual, nos_expandidos
 
         if atual.profundidade < limite:
             for vizinho in reversed(atual.gerar_sucessores()):
                 if vizinho not in visitados:
                     fronteira.append(vizinho)
 
-    return [], 0, nos_expandidos
+    return None, nos_expandidos
+
 
 """ Busca em profundidade (DFS) com limite de tempo e profundidade.
     
@@ -49,4 +51,3 @@ def busca_em_profundidade(
     - caminho: lista de ações até o objetivo
     - passos: número de movimentos
     - nos_expandidos: quantos nós foram visitados """
-    
