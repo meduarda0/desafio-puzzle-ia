@@ -3,7 +3,6 @@ from time import time
 from puzzle import Puzzle
 from typing import Tuple, Optional
 
-
 def busca_em_profundidade(
     inicial: Puzzle,
     objetivo: Tuple[int],
