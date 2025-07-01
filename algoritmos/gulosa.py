@@ -13,14 +13,16 @@ def busca_gulosa(
     fronteira = []
     visitados = set()
     contador = count() 
+    nos_expandidos = 0
 
     heappush(fronteira, (0, next(contador), raiz))
 
     while fronteira:
         _, _, atual = heappop(fronteira)
+        nos_expandidos += 1
 
         if atual.estado == objetivo:
-            return atual
+            return atual, nos_expandidos
 
         visitados.add(atual.estado)
 
@@ -29,4 +31,4 @@ def busca_gulosa(
                 custo = heuristica(vizinho, objetivo)
                 heappush(fronteira, (custo, next(contador), vizinho))  
 
-    return None
+    return None, nos_expandidos

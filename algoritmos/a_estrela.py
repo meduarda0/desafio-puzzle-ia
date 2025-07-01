@@ -14,12 +14,14 @@ def busca_a_estrela(
     contador = count()
     heappush(fronteira, (0, next(contador), raiz))
     visitados = set()
+    nos_expandidos = 0
 
     while fronteira:
         _, _, atual = heappop(fronteira)
+        nos_expandidos =+ 1
 
         if atual.estado == objetivo:
-            return atual
+            return atual, nos_expandidos
 
         visitados.add(atual.estado)
 
@@ -29,4 +31,4 @@ def busca_a_estrela(
                 prioridade = custo + vizinho.profundidade
                 heappush(fronteira, (prioridade, next(contador), vizinho))
 
-    return None
+    return None, nos_expandidos
