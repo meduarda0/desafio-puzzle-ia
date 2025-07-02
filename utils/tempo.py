@@ -17,4 +17,4 @@ class Temporizador:
         return 0.0
 
     def imprimir_tempo(self):
-        print(f"Tempo decorrido: {self.tempo_decorrido():.9f} segundos")
+        print(f"Tempo decorrido: {self.tempo_decorrido():.6f} segundos")

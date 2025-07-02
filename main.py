@@ -1,8 +1,8 @@
 from puzzle import Puzzle
 from heuristicas.fora_do_lugar import heuristica_fora_do_lugar
 from heuristicas.manhattan import heuristica_manhattan
-from utils.timer import Temporizador
-from utils.visualizer import mostrar_caminho
+from utils.tempo import Temporizador
+from utils.visualizar import mostrar_caminho
 
 from algoritmos.largura import busca_em_largura
 from algoritmos.profundidade import busca_em_profundidade
