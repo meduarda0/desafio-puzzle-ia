@@ -13,7 +13,7 @@ from algoritmos.a_estrela import busca_a_estrela
 def exibir_resultado(puzzle: Puzzle, timer: Temporizador):
     print("Ações:", puzzle.caminho())
     print("Número de passos: ", puzzle.profundidade)
-    timer.imprimir_tempo()
+    temporizador.imprimir_tempo()
     print("Caminho da solução: ")
     mostrar_caminho(puzzle)
 
@@ -67,70 +67,70 @@ while True:
     if opcao == "1":
         for puzzle, objetivo in [(puzzle_3x3, objetivo_3x3), (puzzle_4x4, objetivo_4x4)]:
             print(f"\n--- BFS - {puzzle.tamanho * puzzle.tamanho - 1} peças ---")
-            timer = Temporizador()
-            timer.iniciar()
+            temporizador = Temporizador()
+            temporizador.iniciar()
             acoes, passos, nos_expandidos, solucao = busca_em_largura(puzzle, objetivo)
-            timer.parar()
+            temporizador.parar()
 
             if solucao:
                 print("Nós expandidos: ", nos_expandidos)
-                exibir_resultado(solucao, timer)
+                exibir_resultado(solucao, temporizador)
             else:
                 print("Nenhuma solução encontrada.")
 
     elif opcao == "2":
         for puzzle, objetivo in [(puzzle_3x3, objetivo_3x3), (puzzle_4x4, objetivo_4x4)]:
             print(f"\n--- DFS - {puzzle.tamanho * puzzle.tamanho - 1} peças ---")
-            timer = Temporizador()
-            timer.iniciar()
+            temporizador = Temporizador()
+            temporizador.iniciar()
             resultado, nos_expandidos = busca_em_profundidade(puzzle, objetivo)
-            timer.parar()
+            temporizador.parar()
 
             if resultado:
                 print("Nós expandidos: ", nos_expandidos)
-                exibir_resultado(resultado, timer)
+                exibir_resultado(resultado, temporizador)
             else:
                 print("Nenhuma solução encontrada.")
 
     elif opcao == "3":
         for puzzle, objetivo in [(puzzle_3x3, objetivo_3x3), (puzzle_4x4, objetivo_4x4)]:
             print(f"\n--- IDS - {puzzle.tamanho * puzzle.tamanho - 1} peças ---")
-            timer = Temporizador()
-            timer.iniciar()
+            temporizador = Temporizador()
+            temporizador.iniciar()
             resultado, nos_expandidos = busca_aprofundamento_iterativo(puzzle, objetivo)
-            timer.parar()
+            temporizador.parar()
 
             if resultado:
                 print("Nós expandidos: ", nos_expandidos)
-                exibir_resultado(resultado, timer)
+                exibir_resultado(resultado, temporizador)
             else:
                 print("Nenhuma solução encontrada.")
 
     elif opcao == "4":
         for puzzle, objetivo in [(puzzle_3x3, objetivo_3x3), (puzzle_4x4, objetivo_4x4), (puzzle_5x5, objetivo_5x5)]:
             print(f"\n--- Gulosa - {puzzle.tamanho * puzzle.tamanho - 1} peças ---")
-            timer = Temporizador()
-            timer.iniciar()
+            temporizador = Temporizador()
+            temporizador.iniciar()
             resultado, nos_expandidos = busca_gulosa(puzzle.estado, puzzle.tamanho, objetivo, heuristica_fora_do_lugar)
-            timer.parar()
+            temporizador.parar()
 
             if resultado:
                 print("Nós expandidos: ", nos_expandidos)
-                exibir_resultado(resultado, timer)
+                exibir_resultado(resultado, temporizador)
             else:
                 print("Nenhuma solução encontrada.")
 
     elif opcao == "5":
         for puzzle, objetivo in [(puzzle_3x3, objetivo_3x3), (puzzle_4x4, objetivo_4x4), (puzzle_5x5, objetivo_5x5)]:
             print(f"\n--- A* - {puzzle.tamanho * puzzle.tamanho - 1} peças ---")
-            timer = Temporizador()
-            timer.iniciar()
+            temporizador = Temporizador()
+            temporizador.iniciar()
             resultado, nos_expandidos = busca_a_estrela(puzzle.estado, puzzle.tamanho, objetivo, heuristica_manhattan)
-            timer.parar()
+            temporizador.parar()
 
             if resultado:
                 print("Nós expandidos: ", nos_expandidos)
-                exibir_resultado(resultado, timer)
+                exibir_resultado(resultado, temporizador)
             else:
                 print("Nenhuma solução encontrada.")
 
